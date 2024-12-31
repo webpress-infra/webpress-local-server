@@ -15,5 +15,3 @@ COPY ./rootfs/etc/nginx/ssl /etc/nginx/ssl
 RUN chown -R nginx:nginx /etc/nginx/conf.d
 
 RUN chmod -R 774 /etc/nginx/conf.d
-
-USER nginx
