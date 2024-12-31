@@ -4,16 +4,19 @@ services:
       context: images/nginx
     restart: always
     environment:
-      - NGINX_PORT=80
-      - NGINX_SECURE_PORT=443
+      - NGINX_PORT=8080
+      - NGINX_SSL_PORT=443
       - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
+    ports:
+      - '${NGINX_PUBLIC_PORT:-8080}:8080'
+      - '${NGINX_SSL_PUBLIC_PORT:-443}:443'
     volumes:
-      - ./www:/var/www/html
+      - ./www:/var/www/web
   php:
     image: webpress/php:8.2-fpm-ioncube
     restart: unless-stopped
     volumes:
-      - ./www:/var/www/html
+      - ./www:/var/www/web
     environment:
       - TZ=${TZ:-Asia/Ho_Chi_Minh}
       - MAIL_MAILER=${MAIL_MAILER:-smtp}
@@ -55,7 +58,7 @@ services:
       - TZ=Asia/Ho_Chi_Minh
     volumes:
       - dbdata:/var/lib/mysql
-      - ./www:/var/www/html
+      - ./www:/var/www/web
     ports:
       - '${DB_PUBLIC_PORT:-33306}:3306'
 
