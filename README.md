@@ -30,10 +30,13 @@ Mở terminal / CMD chạy lệnh `docker compose up -d`
 - Đưa code của project vào thư mục `website.local`
 - Trỏ tên miền `website.local` về IP `127.0.0.1`
 - Truy cập `http://website.local:8080`
+- Truy cập link https `https://website.local:4443`
 
 > Có thể sử dụng tên thư mục tuỳ ý, nhưng nếu sử dụng tên thư mục dạng `*.local` thì dùng đc SSL có sẵn
 
 > Cổng mặc định là `NGINX_PUBLIC_PORT=8080` có thể tuy ý đổi cổng này trong file `.env` và chạy lệnh `docker compose up -d --build nginx` để update
+
+> Cổng mặc định https là `NGINX_SSL_PUBLIC_PORT=4443`
 
 
 **Sử dụng SSL**
