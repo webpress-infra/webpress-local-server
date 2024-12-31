@@ -34,3 +34,37 @@ Mở terminal / CMD chạy lệnh `docker compose up -d`
 > Có thể sử dụng tên thư mục tuỳ ý, nhưng nếu sử dụng tên thư mục dạng `*.local` thì dùng đc SSL có sẵn
 
 > Cổng mặc định là `NGINX_PUBLIC_PORT=8080` có thể tuy ý đổi cổng này trong file `.env` và chạy lệnh `docker compose up -d --build nginx` để update
+
+
+**Sử dụng SSL**
+
+[https://github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert)
+
+Cài đặt makecert theo hướng dẫn ở trên.
+
+Nếu muốn tạo certificate theo domain tuỳ chỉnh thì làm lần lượt các bước sau
+
+Cài đặt local CA
+```
+mkcert -install
+```
+
+Tạo certificate
+
+> mở thư mục `images/nginx/rootfs/etc/nginx/ssl` và gõ lệnh
+
+```
+mkcert example.com "*.example.com" localhost 127.0.0.1 ::1
+
+```
+> Thay thế `example.com` bằng tên miền muốn dùng certificate
+
+Update file `images/nginx/rootfs/etc/nginx/templates/default.conf.template`
+
+```
+ssl_certificate /etc/nginx/ssl/website.local+5.pem;
+ssl_certificate_key /etc/nginx/ssl/website.local+5-key.pem;
+```
+Thay thế tên 2 file `.pem` bằng 2 file mà makecert vừa tạo ra
+
+Update lại nginx bằng lệnh `docker compose up -d --build nginx`
