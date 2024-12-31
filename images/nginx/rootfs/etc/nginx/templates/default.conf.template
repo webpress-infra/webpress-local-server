@@ -64,8 +64,8 @@ server {
     listen [::]:${NGINX_SSL_PORT} ssl;
     server_name _;
 
-    ssl_certificate /etc/nginx/ssl/_wildcard.local+5.pem;
-    ssl_certificate_key /etc/nginx/ssl/_wildcard.local+5-key.pem;
+    ssl_certificate /etc/nginx/ssl/website.local+5.pem;
+    ssl_certificate_key /etc/nginx/ssl/website.local+5-key.pem;
 
     client_max_body_size 64M;
 
