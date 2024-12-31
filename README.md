@@ -2,21 +2,26 @@
 
 - [Webpress Local Server](#webpress-local-server)
   - [Cài đặt](#cài-đặt)
+    - [Cài đặt Docker](#cài-đặt-docker)
+    - [Clone repository](#clone-repository)
+    - [Tạo file .env](#tạo-file-env)
+    - [Khởi chạy website](#khởi-chạy-website)
+  - [Sử dụng SSL](#sử-dụng-ssl)
 
 
 ## Cài đặt
 
-**Cài đặt Docker**
+### Cài đặt Docker
 
 [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
 
-**Clone repository**
+### Clone repository
 
 ```
 git clone https://github.com/webpress-infra/webpress-local-server
 ```
 
-**Tạo file .env**
+### Tạo file .env
 
 ```
 cp .env.example .env
@@ -24,7 +29,7 @@ cp .env.example .env
 
 Mở terminal / CMD chạy lệnh `docker compose up -d`
 
-**Khởi chạy website**
+### Khởi chạy website
 
 - Tạo thư mục `www/website.local`
 - Đưa code của project vào thư mục `website.local`
@@ -39,7 +44,7 @@ Mở terminal / CMD chạy lệnh `docker compose up -d`
 > Cổng mặc định https là `NGINX_SSL_PUBLIC_PORT=4443`
 
 
-**Sử dụng SSL**
+## Sử dụng SSL
 
 [https://github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert)
 
