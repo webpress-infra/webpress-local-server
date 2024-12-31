@@ -60,8 +60,8 @@ server {
 }
 
 server {
-    listen ${NGINX_SSL_PORT};
-    listen [::]:${NGINX_SSL_PORT};
+    listen ${NGINX_SSL_PORT} ssl;
+    listen [::]:${NGINX_SSL_PORT} ssl;
     server_name _;
 
     ssl_certificate /etc/nginx/ssl/cert.pem;
